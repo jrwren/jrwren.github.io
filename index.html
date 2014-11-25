@@ -1,7 +1,45 @@
 <!DOCTYPE html>
 <html>
-    <body>
-        <h1>hello world</h1>
-        <p>I'm hosted with github</p>
-    </body>
+<head>
+</head>
+<body>
+<div> &nbsp;
+<span id="arg1"></span>
+</div>
+<div>+
+<span id="arg2"></span>
+</div>
+<hr>
+<input id="answer"></input>
+<div id="response"></div>
+<div>Score:
+<span id="score"></span>
+</div>
+<script>
+var score = 0;
+function run() {
+    var min = 1;
+    var max = 25;
+    var a = Math.floor(Math.random() * (max - min) + min );
+    var b = Math.floor(Math.random() * (max - min) + min );
+    document.querySelector("#arg1").innerHTML = a;
+    document.querySelector("#arg2").innerHTML = b;
+    document.querySelector("#answer").value = '';
+    document.querySelector("#answer").focus();
+
+    document.querySelector("#answer").onkeyup = function(event) {
+        if (event.target.value == a+b) {
+            document.querySelector("#response").innerHTML = "CORRECT";
+            window.setTimeout(run, 2000);
+            score ++ ;
+            document.querySelector("#score").innerHTML = score;
+        }
+        else {
+            document.querySelector("#response").innerHTML = "";
+        }
+    };
+}
+run();
+</script>
+</body>
 </html>
